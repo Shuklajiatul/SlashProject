@@ -59,7 +59,7 @@
             <?php if (isset($error)): ?>
                 <p style="color: red;"><?= $error ?></p>
             <?php endif; ?>
-            <input type="email" name="email" placeholder="Email" value="<?= set_value('email') ?>" required>
+            <input type="email" name="email" placeholder="Email" value="" required>
             <input type="password" name="password" placeholder="Password" required>
             <button type="submit">Login</button>
             <p>Don't have an account? <a href="/register">Register</a></p>

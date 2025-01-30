@@ -26,8 +26,9 @@
         <div class="container-fluid">
             <img src="/assets/img/Slash Logo.png" style="height: 45px; width: 45px;" alt="">
             <div class="ml-auto d-flex gap-4">
-            <h4>Welcome! <?= session()->get('name') ?></h4>
-            <a href="<?= base_url('/login') ?>"class="btn btn-info"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
+            <h4>Welcome, <?= session()->get('name') ?: 'Guest' ?></h4>
+            <!-- <a href=""class="btn btn-info"><i class="fa-solid fa-right-from-bracket"></i>Logout</a> -->
+            <a href="#" onclick="confirmLogout()" class="btn btn-primary ms-3"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
             </div>
         </div>
     </nav>
@@ -74,5 +75,13 @@
         </thead>
     </table>
 </body>
-
+<script>
+  function confirmLogout() {
+    const isConfirmed = confirm("Are you sure you want to log out?");
+    if (isConfirmed) {
+      // Redirect to the logout page if confirmed
+      window.location.href = '/logout';
+    }
+  }
+</script>
 </html>

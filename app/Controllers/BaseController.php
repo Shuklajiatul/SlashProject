@@ -51,23 +51,16 @@ abstract class BaseController extends Controller
         // Do Not Edit This Line
         parent::initController($request, $response, $logger);
 
-        // Prevent caching
-        $this->response->setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
-        $this->response->setHeader('Pragma', 'no-cache');
+        // Preload any models, libraries, etc, here.
 
-        // Check if the user is logged in
-        if (!session()->get('isLoggedIn')) {
-            // Store the redirect URL in session to redirect after login
-            session()->set('redirect_url', current_url());
-            return redirect()->to('/login'); // Redirect to login if not logged in
-        }
+        // E.g.: $this->session = \Config\Services::session();
     }
 
-    protected function isLoggedIn()
+
+    protected $session;
+
+    public function __construct()
     {
-        return session()->get('isLoggedIn');
+        $this->session = \Config\Services::session();
     }
 }
-
-
-
